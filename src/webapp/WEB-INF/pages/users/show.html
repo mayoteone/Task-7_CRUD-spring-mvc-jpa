@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <style>
+        .user-info {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            max-width: 200px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-family: Arial, sans-serif; /* Установка единого шрифта */
+        }
+
+        p {
+            margin: 5px 0; /* Уменьшение пробелов между параграфами */
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="user-info">
+
+    <p th:text="${user.getId()}">VALUE</p>
+    <p th:text="${user.getName()}">VALUE</p>
+    <p th:text="${user.getSurname()}">VALUE</p>
+    <p th:text="${user.getEmail()}">VALUE</p>
+
+    <a class="button" th:href="@{/people/{id}/edit(id=${user.getId()})}">Edit</a>
+    <a class="button" th:href="@{/people}">Back</a>
+
+    <form th:method="DELETE" th:action="@{/people/{id}(id=${user.getId()})}">
+        <input class="button" type="submit" value="Delete"/>
+    </form>
+</div>
+
+</body>
+</html>
